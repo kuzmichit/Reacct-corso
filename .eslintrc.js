@@ -59,6 +59,7 @@ module.exports = {
     'guard-for-in': 0,
     'no-continue': 0,
     'no-debugger': 0,
-    'no-plusplus': 0
+    'no-plusplus': 0,
+    'react/react-in-jsx-scope': 0,
   }
 };
