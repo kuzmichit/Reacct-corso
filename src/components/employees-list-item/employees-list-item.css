@@ -11,7 +11,7 @@
     line-height: 35px;
     font-size: 20px;
     cursor: pointer;
-    min-width: 550px;
+    min-width: 30%;
 }
 
 .list-group-item input {
@@ -51,8 +51,8 @@
 }
 
 .list-group-item.like .fa-star {
-    opacity: 1;
-    transform: translateX(0px);
+    /*opacity: 0;*/
+    /*transform: translateX(0px);*/
 }
 
 .list-group-item.increase .list-group-item-label, .list-group-item.increase .list-group-item-input {
