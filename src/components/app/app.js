@@ -10,8 +10,8 @@ const app = () => {
   return (
     <div className='app'>
       <div className="search-panel">
-        <SearchPanel/>
         <AppInfo/>
+        <SearchPanel/>
         <AppFilter/>
         <EmployeesList/>
       </div>

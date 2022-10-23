@@ -61,5 +61,6 @@ module.exports = {
     'no-debugger': 0,
     'no-plusplus': 0,
     'react/react-in-jsx-scope': 0,
+    'react/prop-types': 0
   }
 };
