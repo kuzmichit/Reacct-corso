@@ -18,28 +18,25 @@ class EmployeesListItem extends Component {
     } ) );
   };
 	
-  // onNameClick = () => {
-  //   this.setState( ( {like} ) => ( {
-  //     like: !like
-  //   } ) );
+  onNameClick = () => {
+    this.setState( ( {like} ) => ( {
+      like: !like
+    } ) );
 
-  // };
+  };
 
   render() {
     const {name, salary} = this.props;
-    const {increase} = this.state;
+    const {increase, like} = this.state;
 
     let classNames = 'list-group-item d-flex justify-content-between';
     if(increase) {
       classNames += ' increase';
     }
+    if(like) {
+      classNames += ' like';
+    }
 
-    // let classInUser = 'list-group-item-label';
-    // if(like) {
-    //   classInUser += ' like';
-    //   console.log(classInUser);
-    // }
-  
     return (
       <li className= {classNames}>
         <span className= { 'list-group-item-label' }
@@ -49,13 +46,13 @@ class EmployeesListItem extends Component {
           <button className="btn-cookie btn-sm"
             onClick={this.onIncrease}
             type="button">
-            <i className="fas fa-cookie"></i>
+            <i className="fa-solid fa-cookie"></i>
           </button>
           <button className="btn-trash btn-sm"
             type="button">
-            <i className="fas fa-trash"></i>
+            <i className="fa-solid fa-trash"></i>
           </button>
-          <i className="fas fas-star"></i>
+          <i className="fa-solid fa-star"></i>
         </div>
       </li>
     );
