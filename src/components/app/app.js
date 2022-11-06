@@ -8,10 +8,10 @@ import EmployeesList from '../employees-list/employees-list';
 import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 const data = [
-  {name:'Mario R.', salary:1500, increase: false},
-  {name:'Simone T.', salary:800, increase: true},
-  {name:'Fabrizio R.',salary:1200, increase: false}
-];
+  {name:'Mario R.', salary:1500, increase: false, id: 1},
+  {name:'Simone T.', salary:800, increase: true, id: 2},
+  {name:'Fabrizio R.',salary:1200, increase: false, id: 3} 
+]; 
 
 const app = () => {
   return (
