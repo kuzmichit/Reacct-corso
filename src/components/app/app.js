@@ -1,3 +1,6 @@
+import {Component} from 'react';
+import _ from 'lodash';
+
 import './app.css';
 import '../search-panel/search-panel.css';
 
@@ -7,26 +10,87 @@ import AppFilter from '../app-filter/app-filter';
 import EmployeesList from '../employees-list/employees-list';
 import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
-const data = [
-  {name:'Mario R.', salary:1500, increase: false, id: 1},
-  {name:'Simone T.', salary:800, increase: true, id: 2},
-  {name:'Fabrizio R.',salary:1200, increase: false, id: 3} 
-]; 
+class App extends Component {
 
-const app = () => {
-  return (
-    <div className='app'>
-      <AppInfo/>
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [
+        {name:'Mario R.', salary:1500, increase: false, rise: true, id: 1},
+        {name:'Simone T.', salary:800, increase: true, rise: false, id: 2},
+        {name:'Fabrizio R.',salary:1200, increase: false, rise: false, id: 3} 
+      ],
+    };
 
-      <div className="search-panel">
-        <SearchPanel/>
-        <AppFilter/>
-        <EmployeesList data={data}/>
+    this.currentId = _.uniqueId;
+  }
 
-        <EmployeesAddForm/>
+  onDelete = (id) => {
+
+    this.setState( ( {data} ) => {
+      const newArr = data.filter(item => id !== item.id);
+
+      return {
+        data: newArr
+      };
+    } );
+  }; 
+
+  addEmployee = (name, salary) => {      
+    this.setState( ( {data} ) => {
+      const newEmployee = [...data, {name, salary, increase: false, id: this.currentId('a')} ];
+			
+      return {
+        data: newEmployee
+      };
+    } );
+  };
+
+  onToggleIncrease = (id) => {
+
+    //   this.setState( ( { data } ) => {
+
+    //     const newA = data.map(item => {
+    //       if(item['id'] === id)
+    //         item['increase'] = !item['increase'];
+
+    //       return item;
+    //     } );
+
+    //     console.log(newA);
+      
+    //     return {
+    //       data: newA
+    //     };
+    //   } );
+    console.log(`this increase ${id}`);
+  };
+
+  onToggleRise = (id) => {
+    console.log(`this rise ${id}`);
+  };
+
+  render() {
+	
+    return (
+      <div className = 'app'>
+        <AppInfo/>
+	
+        <div className = "search-panel">
+          <SearchPanel/>
+          <AppFilter/>
+          <EmployeesList 
+            data = { this.state.data }
+            onDelete = { this.onDelete }
+            onToggleIncrease = { this.onToggleIncrease }
+            onToggleRise = { this.onToggleRise } />
+						
+          <EmployeesAddForm
+            onAdd = { this.addEmployee }/>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default app;
+export default App;

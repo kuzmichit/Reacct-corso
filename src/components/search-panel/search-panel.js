@@ -1,9 +1,9 @@
 
 const SearchPanel = () => {
   return (
-    <input className="search-input form-control"
-      type='input'
-      placeholder='Cerca lavoratore'/>
+    <input className = "search-input form-control"
+      type = 'input'
+      placeholder = 'Cerca lavoratore'/>
   );
 };
 

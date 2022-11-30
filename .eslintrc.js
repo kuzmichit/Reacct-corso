@@ -61,6 +61,12 @@ module.exports = {
     'no-debugger': 0,
     'no-plusplus': 0,
     'react/react-in-jsx-scope': 0,
-    'react/prop-types': 0
+    'react/prop-types': 0,
+    'react/jsx-curly-spacing': [2, 'always'],
+    'react/jsx-equals-spacing': [2, 'always']
   }
 };
+
+// 'react/jsx-curly-spacing': [2, {'when': 'always', 'spacing': {
+//   'objectLiterals': 'never'
+// }}]
