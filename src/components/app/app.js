@@ -20,6 +20,7 @@ class App extends Component {
         {name:'Simone T.', salary:800, increase: true, rise: false, id: 2},
         {name:'Fabrizio R.',salary:1200, increase: false, rise: false, id: 3} 
       ],
+      employees: 4,
     };
 
     this.currentId = _.uniqueId;
@@ -36,7 +37,13 @@ class App extends Component {
     } );
   }; 
 
-  addEmployee = (name, salary) => {      
+  addEmployee = (name, salary) => { 
+    if(!/[a-z]{3,}/.test(name) || !/\d{3,}/.test(salary) ) {
+      alert('Inserire il valore più lingo');
+      // debugger;
+
+      return ;
+    }     
     this.setState( ( {data} ) => {
       const newEmployee = [...data, {name, salary, increase: false, id: this.currentId('a')} ];
 			
@@ -55,7 +62,6 @@ class App extends Component {
 
         return item;
       } );
-      console.log(`this increase ${newData}`);
       
       return {
         data: newData
@@ -65,14 +71,31 @@ class App extends Component {
   };
 
   onToggleRise = (id) => {
-    console.log(`this rise ${id}`);
+    this.setState( ( {data} ) => {
+
+      const newData = data.map(item => {
+        if(item.id === id) return {...item, rise: !item['rise'] };
+
+        return item;
+      } );
+
+      return {
+        data: newData
+      };
+    } );
   };
 
   render() {
 	
+    const {data} = this.state;
+    const employees = data.length; 
+    const employeesToRise = data.filter(item => item.increase).length;
+    console.log(employeesToRise);
+
     return (
       <div className = 'app'>
-        <AppInfo quantity = { 5 }/>
+        <AppInfo employees = { employees } 
+          employeesToRise = { employeesToRise }/>
 	
         <div className = "search-panel">
           <SearchPanel/>

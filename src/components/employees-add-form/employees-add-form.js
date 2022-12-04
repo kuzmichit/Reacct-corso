@@ -5,20 +5,20 @@ class EmployeesAddForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      nameTest: '',
       salary: false
     };
   }
 
   onValueChange = (e) => {
-    console.log(typeof e.target.value);
+  
     this.setState( {
       [e.target.name]: e.target.value
     } );
   };
   render() {
 
-    const {name, salary} = this.state;
+    const {nameTest, salary} = this.state;
     
     return (
       <div className = 'app-add-form'>
@@ -27,14 +27,16 @@ class EmployeesAddForm extends Component {
           <input className = "form-control new-post-label"
             placeholder = 'Nome del lavoratore'
             type = 'text'
-            name = 'name'
-            value = { name }
+            name = 'nameTest'
+            required
+            value = { nameTest }
             onChange = { this.onValueChange } >
           </input>
 
           <input className = "form-control new-post-label"
             placeholder = 'Lo stipendio'
             type = 'number'
+            required
             value = { salary }
             name = { 'salary' }
             onChange = { this.onValueChange } >
